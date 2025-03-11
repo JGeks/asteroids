@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+from player import Player
 
 def main():
     pygame.init()
@@ -14,14 +15,23 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+    # Create player ONCE, outside the game loop
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
     running = True
 
     while running:
         for event in pygame.event.get():
+            #Closing window stops program
             if event.type == pygame.QUIT:
                 return
 
+        #Create black screen
         screen.fill((0, 0, 0))
+
+        player.draw(screen)
+
         pygame.display.flip()
 
         dt = clock.tick(60) / 1000
