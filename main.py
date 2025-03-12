@@ -28,8 +28,8 @@ def main():
     AsteroidField.containers = (updateable,)
 
     # Create player ONCE, outside the game loop
-    #player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-    #asteroid_field = AsteroidField()
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    asteroid_field = AsteroidField()
 
     # The game is running
     running = True
