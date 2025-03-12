@@ -16,9 +16,14 @@ def main():
     dt = 0
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    # Groups for objects
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updateable, drawable)
+
     # Create player ONCE, outside the game loop
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-
+    # The game is running
     running = True
 
     while running:
@@ -30,7 +35,8 @@ def main():
         #Create black screen
         screen.fill((0, 0, 0))
 
-        player.draw(screen)
+        updateable.update(dt)
+        drawable.draw(screen)
 
         pygame.display.flip()
 
