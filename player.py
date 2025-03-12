@@ -11,6 +11,9 @@ class Player(CircleShape):
         # Call the parent constructor with the required parameters
         super().__init__(x, y, PLAYER_RADIUS)
 
+        # Add to container groups
+        self.add(self.containers)
+
         # Initialize rotation
         self.rotation = 0
 
