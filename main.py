@@ -43,8 +43,19 @@ def main():
             #Closing window stops program
             if event.type == pygame.QUIT:
                 return
+            
+        for shot in shots:
+            if shot.collision(asteroid):
+                asteroid.kill()
+                shot.kill()
 
+        # Collision check
         for asteroid in asteroids:
+            for shot in shots:
+                if shot.collision(asteroid):
+                    asteroid.split()
+                    shot.kill()
+
             if player.collision(asteroid):
                 print("Game over!")
                 sys.exit()
